@@ -89,6 +89,14 @@ let routes = createBrowserRouter([
         ),
       },
       {
+        path: "Fresh Cart",
+        element: (
+          <ProtectedRoute>
+            <Home />
+          </ProtectedRoute>
+        ),
+      },
+      {
         path: "ProductDetails/:id",
         element: (
           <ProtectedRoute>
