@@ -3,7 +3,7 @@
   "app",
   "version": "0.1.0",
   "private": true,
-  "homepage":"https://Monaammar.github.io/Fresh-Cart",
+  "homepage":"https://Monaammar.github.io/Home",
 
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.4.2",

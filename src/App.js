@@ -17,7 +17,7 @@ import Brands from "./Pages/Brands/Brands";
 import WishList from "./Pages/WishList/WishList";
 import { ListContextProvider } from "./Context/WishListContext";
 
-
+const App = () => {
 let routes = createBrowserRouter([
   {
     path: "",
@@ -113,7 +113,7 @@ let routes = createBrowserRouter([
   },
 ]);
 
-function App() {
+
   // return
   return (
    <ListContextProvider>
@@ -124,6 +124,6 @@ function App() {
     </CartContextProvider>
     </ListContextProvider>
   );
-}
+};
 
 export default App;
