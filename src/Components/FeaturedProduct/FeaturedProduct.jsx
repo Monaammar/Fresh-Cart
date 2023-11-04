@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../../Context/CartContext";
 import toast from "react-hot-toast";
 import { ListContext } from "../../Context/WishListContext";
-import style from './FeaturedProduct.module.css'
+import style from "./FeaturedProduct.module.css";
+import icon from "../../assets/images/heart2.png";
 function FeaturedProduct() {
   const [products, setProducts] = useState([]);
   async function getAllProducts() {
@@ -23,8 +24,6 @@ function FeaturedProduct() {
   const { addToCart, setNumberOfCartItems } = useContext(CartContext);
   const { addToList } = useContext(ListContext);
 
-
-
   async function addProductToCart(id) {
     const { data } = await addToCart(id);
     console.log(data);
@@ -34,14 +33,11 @@ function FeaturedProduct() {
     }
   }
   async function addProductToList(id) {
-   
     let { data } = await addToList(id);
     console.log(data);
     if (data.status === "success") {
       toast.success(data.message);
-      
     }
-  
   }
   // function getData() {
   //   return axios.get("https://ecommerce.routemisr.com/api/v1/products");
@@ -54,12 +50,17 @@ function FeaturedProduct() {
 
       {products.length > 0 ? (
         products.map((product) => (
-          <div className={`col-md-2 ${style.card} border mb-5   mx-3`} key={product._id}>
+          <div
+            className={`col-md-2 ${style.card} border mb-5   mx-3`}
+            key={product._id}
+          > 
+           
             <Link
               className="text-decoration-none"
               to={`/ProductDetails/${product._id}`}
             >
               <div className="inner product p-3 rounded text-black">
+            
                 <img
                   src={product.imageCover}
                   className="w-100"
@@ -78,17 +79,18 @@ function FeaturedProduct() {
                     <i className="fa-solid fa-star"></i>
                     {product.ratingsAverage}
                   </div>
+                  
                 </div>
               </div>
             </Link>
-            <button
-              className={`mb-3 ${style.button}`}
-              onClick={() => {
-                addProductToList(product._id);
-              }}
-            >
-              <i className="fa-solid fa-heart "></i>
-            </button>
+            <span
+          className={`px-3 ${style.button}`}
+          onClick={() => {
+            addProductToList(product._id);
+          }}
+        >
+          <img src={icon} className="px-5 mx-5"/>
+        </span>
             <button
               className="btn btn-success w-100 mb-3"
               onClick={() => {
