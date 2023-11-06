@@ -7,7 +7,7 @@ import { CartContext } from "../../Context/CartContext";
 import toast from "react-hot-toast";
 import { ListContext } from "../../Context/WishListContext";
 import style from "./FeaturedProduct.module.css";
-import icon from "../../assets/images/heart2.png";
+import icon from "../../assets/images/heart.256x228.png";
 function FeaturedProduct() {
   const [products, setProducts] = useState([]);
   async function getAllProducts() {
@@ -53,14 +53,20 @@ function FeaturedProduct() {
           <div
             className={`col-md-2 ${style.card} border mb-5   mx-3`}
             key={product._id}
-          > 
-           
+          >
+              <span
+              className={`px-3 ${style.button}`}
+              onClick={() => {
+                addProductToList(product._id);
+              }}
+            >
+              <img src={icon} className="px-5 mx-5 my-1 py-2 " />
+            </span>
             <Link
               className="text-decoration-none"
               to={`/ProductDetails/${product._id}`}
             >
               <div className="inner product p-3 rounded text-black">
-            
                 <img
                   src={product.imageCover}
                   className="w-100"
@@ -69,8 +75,17 @@ function FeaturedProduct() {
                 <h4 className="h6 my-2 text-success">
                   {product.category.name}
                 </h4>
+
                 <h3 className="h6 fw-bold">
                   {product.title.split(" ", 2).join(" ")}
+                  {/* <span
+                    className={`px-3 ${style.button}`}
+                    onClick={() => {
+                      addProductToList(product._id);
+                    }}
+                  >
+                    <img src={icon} className="px-5 mx-5 " />
+                  </span> */}
                 </h3>
 
                 <div className="d-flex justify-content-between px-2">
@@ -79,18 +94,17 @@ function FeaturedProduct() {
                     <i className="fa-solid fa-star"></i>
                     {product.ratingsAverage}
                   </div>
-                  
                 </div>
               </div>
             </Link>
-            <span
-          className={`px-3 ${style.button}`}
-          onClick={() => {
-            addProductToList(product._id);
-          }}
-        >
-          <img src={icon} className="px-5 mx-5"/>
-        </span>
+            {/* <span
+              className={`px-3 ${style.button}`}
+              onClick={() => {
+                addProductToList(product._id);
+              }}
+            >
+              <img src={icon} className="px-5 mx-5 py-2 " />
+            </span> */}
             <button
               className="btn btn-success w-100 mb-3"
               onClick={() => {
